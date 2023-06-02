@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Bin</title>
+    <style>
+        .card {
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+            width:80%;
+            transition: 0.5s;
+            background-color:whitesmoke;
+            padding: 5px;
+            border-radius: 5px;
+            margin:auto;
+        }
+        .card>div{
+            text-align: center;
+            color: teal;
+        }
+        .card>h1{
+            text-align: center;
+            color:teal;
+        }
+        .card>h2{
+            text-align: center;
+            color:teal;
+        }
+        .card:hover{
+            box-shadow: rgba(14, 30, 37, 0.12) 16px 32px 64px 16px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        }
+        .card1{
+            padding: 10px;
+        }
+        button{
+        background-color: teal;
+        width:15%;
+        color:whitesmoke;
+        padding:15px;
+        margin: auto;
+        border-radius:20px ;
+        cursor: pointer;
+        }
+        input[type=text],input[type=password],input[type=number],input[type=date]{
+        width:30%; 
+        margin: auto;
+        padding: 15px 20px;
+        display: inline-block;
+        border: 3px solid teal;
+        border-radius: 10px;
+        }
+        input[type=submit]{
+        background-color: teal;
+        width:15%;
+        color:whitesmoke;
+        padding:15px;
+        margin: auto;
+        border-radius:20px ;
+        cursor: pointer;
+        }
+        button:hover{
+        opacity: 0.7;
+        }
+        .card1>ol{
+            display: flex;
+            justify-content: space-around;
+        }
+        .card>ol{
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body style="background-color: lavenderblush;">
+    <div class="card">
+        <ul>
+            <h2><a href="#a1" style="color: teal;float:left;">About</a></h2>
+        </ul>
+        <ul>
+            <h2><a href="#a2" style="color: teal;float:right; padding-right: 50px;padding-left: 10px;">Log In</a></h2>
+        </ul><br><br>
+        <div>
+        <img src="https://www.guardforce.com.hk/media/images/news/smart%20bin%20pic-01_1600x907.jpg" alt="Bin Image"style="float:center;width: 80%;height:50%;">
+        </div>
+        <h1>Smart Bin Technology</h1>
+    </div>
+    <br><br><br>
+    <div class="card"id="a1">
+        <p style="opacity:0.8;color:darkslategray;font-size:large;">Smart bins are an 
+            intelligent waste management system. They have wireless ultrasonic fill-level sensors embedded inside 
+            which detect how full the bin is and then, through the IoT, this data is sent to a cloud-based 
+            monitoring and analytics platform.</p>
+            <ol>
+            <li style="list-style-type: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJxK88L2DqfKJhPQ7Qfu6TMwkztc9aA-PqL4ATE4aw5D7W-vjCiGfTvaFqsDbKYuZc1R4&usqp=CAU" alt="bin image"></li>
+            </ol>
+    </div><br><br>
+    <div class="card" id="a2">
+        <h1>Login</h1>
+        <div style="float: center;">
+            <div class="card1">
+                <form name="frmContact" class="needs-validation" action="check.php" method="post">
+                <input type="text" class="form-control" placeholder="Enter ID" id = "id" name="id" value="" required><br><br><br>
+                <input type="password" class="form-control" placeholder="Enter Password" id ="password" name="password" value="" required><br><br><br>
+                <input type="submit" value="Login">
+                </form><br>
+            
+                <a href="register.html" target="_blank"><p>New User Registration?</p></a>
+            </div>
+               
+      
+    </div>
+
+</body>
+</html>

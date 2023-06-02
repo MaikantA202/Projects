@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+<style>
+  .card {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  width:80%;
+  transition: 0.5s;
+  background-color:whitesmoke;
+  padding: 5px;
+  border-radius: 5px;
+  margin:auto;
+  }
+  .card>div{
+  text-align: center;
+  color: teal;
+  }
+  .card>h1{
+  text-align: center;
+  color:teal;
+  }
+  .card>h2{
+  text-align: center;
+  color:teal;
+  }
+  .card:hover{
+  box-shadow: rgba(14, 30, 37, 0.12) 16px 32px 64px 16px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  }
+  .card1{
+  padding: 10px;
+  }
+  input[type=submit]{
+  background-color: teal;
+  width:15%;
+  color:whitesmoke;
+  padding:15px;
+  margin: auto;
+  border-radius:20px ;
+  cursor: pointer;
+  }
+  input[type=text],input[type=password],input[type=number],input[type=date]{
+  width:30%; 
+  margin: auto;
+  padding: 15px 20px;
+  display: inline-block;
+  border: 3px solid teal;
+  border-radius: 10px;
+  }
+  button:hover{
+  opacity: 0.7;
+  }
+  .card1>ol{
+  display: flex;
+  justify-content: space-around;
+  }
+  .card>ol{
+  display: flex;
+  justify-content: space-around;
+  }
+</style>
+</head>
+
+<body style="background-color: lavenderblush;">
+<div class="card"> 
+  <h1>User Registration</h1>
+      
+<form name="frmContact" class="needs-validation" method="post" action="contact.php">
+    <div class="card1" style="text-align: center;">
+      <input type="text" class="form-control" name="txtName" id="txtName" placeholder="Name" value="" required><br><br><br>
+    
+      <input type="number"  class="form-control" name="txtPhone" id="txtPhone" placeholder="Phone" value="" required><br><br><br>
+        
+      <input type="text" class="form-control" name="txtEmail" id="txtEmail" placeholder="Email" value="" required><br><br><br>
+     
+      <input type="number" class="form-control" name="txtAad" id="txtAad" placeholder="Aad" value="" required><br><br><br>
+
+      <input type="text" class="form-control" name="txtCid" id="txtCid" placeholder="Create an ID" value="" required><br><br><br>
+      
+      <input type="text" class="form-control" name="txtPassword" id="txtPassword" placeholder="Create a Password" value="" required><br><br><br><br><br>
+
+      <input type="submit" name="Submit" id="Submit" value="Submit"  class="btn btn-primary btn-lg btn-block"><br>
+      <h3><a href="SRP.html" style="color: teal;">Back to Login</a></h3>
+    </div>
+</form>
+</div>
+</body>
+</html> 

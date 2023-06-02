@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body {
+      margin: 0;
+      font-family: sans-serif;
+      }
+
+      .editor {
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      }
+
+      .toolbar {
+      width: 250px;
+      background: #eeeeee;
+      }
+
+      .toolbar-item {
+      padding: 15px;
+      }
+
+      .tool-label {
+        display: block; 
+        margin-bottom: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        }
+
+      .tool-input {
+        width: 100%;
+        }
+
+      .image-area {
+        flex-grow: 1;
+        padding: 20px;
+        background: #555555;
+        }
+
+      #canvas {
+        max-width: 100%;
+        max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+  <div class="editor">
+    <div class="toolbar">
+      <div class="toolbar-item">
+        <input type="file" id="imageFileInput" required accept="image/*">
+      </div>
+      <div class="toolbar-item">
+        <label class="tool-label" for="brightness">brightness</label>
+        <input class="tool-input" type="range" id="brightness" min="0" max="200" value="100" oninput="outputUpdate1(value)">
+        <output for="brightness" id="volume1"></output>   
+      </div>
+      <div class="toolbar-item">
+        <label class="tool-label" for="saturation">Saturation</label>
+        <input class="tool-input" type="range" id="saturation" min="0" max="200" value="100" oninput="outputUpdate(value)">
+        <output for="saturation" id="volume"></output>
+      </div>
+      <div class="toolbar-item">
+        <label class="tool-label" for="blur">Blur</label>
+        <input class="tool-input" type="range" min="0" max="5" value="0" id="blur" 
+	      step="1" oninput="outputUpdate2(value)">
+        <output for="blur" id="volume2"></output>
+      </div>
+      <div class="toolbar-item">
+        <label class="tool-label" for="inversion">Inversion</label>
+        <input class="tool-input" type="range" id="inversion" min="0" max="100" value="0" oninput="outputUpdate3(value)">
+        <output for="inversion" id="volume3"></output>
+      </div>
+      <div class="toolcar-item">
+        <button id="download-btn" onclick="downloadImage()" style="margin: 5%;">Download Image</button>
+      </div>
+    </div>
+    <div class="image-area">
+      <!-- <h3 style="font-family:sans-serif;text-align: center;margin-top: 0%;color: whitesmoke;">Image Enhancer</h3> -->
+      <canvas id="canvas" height="500" width="500"></canvas>
+    </div>
+  </div>
+  <script defer>
+    function outputUpdate(vol) {
+	  document.querySelector('#volume').value = vol;
+    }
+    function outputUpdate1(vol) {
+	  document.querySelector('#volume1').value = vol;
+    }
+    function outputUpdate2(vol) {
+	  document.querySelector('#volume2').value = vol;
+    }
+    function outputUpdate3(vol) {
+	  document.querySelector('#volume3').value = vol;
+    }
+    const fileInput = document.querySelector("#imageFileInput");
+    const canvas = document.querySelector("#canvas");
+    const canvasCtx = canvas.getContext("2d");
+    const brightnessInput = document.querySelector("#brightness");
+    const saturationInput = document.querySelector("#saturation");
+    const blurInput = document.querySelector("#blur");
+    const inversionInput = document.querySelector("#inversion");
+    
+
+    const settings = {};
+    let image = null;
+
+    function resetSettings() {
+      settings.brightness = "100";
+      settings.saturation = "100";
+      settings.blur = "0";
+      settings.inversion = "0";
+
+      brightnessInput.value = settings.brightness;
+      saturationInput.value = settings.saturation;
+      blurInput.value = settings.blur;
+      inversionInput.value = settings.inversion;
+    }
+
+    function updateSetting(key, value) {
+      if (!image) return;
+      settings[key] = value;
+      renderImage();
+    }
+
+    function generateFilter() {
+      const { brightness, saturation, blur, inversion } = settings;
+      return `brightness(${brightness}%) saturate(${saturation}%) blur(${blur}px) invert(${inversion}%)`;
+    }
+
+    function renderImage() {
+      canvas.width = image.width;
+      canvas.height = image.height;
+      canvasCtx.filter = generateFilter();
+      canvasCtx.drawImage(image, 0, 0);
+    }
+    function downloadImage() {
+      const link = document.createElement('a');
+      link.download = 'edited_image.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    brightnessInput.addEventListener("change", () =>
+      updateSetting("brightness", brightnessInput.value)
+    );
+    saturationInput.addEventListener("change", () =>
+      updateSetting("saturation", saturationInput.value)
+    );
+    blurInput.addEventListener("change", () =>
+      updateSetting("blur", blurInput.value)
+    );
+    inversionInput.addEventListener("change", () =>
+      updateSetting("inversion", inversionInput.value)
+    );
+
+    fileInput.addEventListener("change", () => {
+      image = new Image();
+      image.addEventListener("load", () => {
+        resetSettings();
+        renderImage();
+      });
+      image.src = URL.createObjectURL(fileInput.files[0]);
+    });
+
+
+    resetSettings();
+
+  </script>
+</body>
+</html>
