@@ -7,7 +7,7 @@ var a=0;
 
 
 
-//Starts Here********************************(1)
+//Starts Here********************************
 $(document).keypress(function(e){
     $("h3").text("");
     if (!start){
@@ -17,7 +17,7 @@ $(document).keypress(function(e){
     }
     
 });
-//when the user clicks the color it checks(3)
+//when the user clicks the color it checks
 $(".btn").click(function(e){
     color=$(this).attr("id")
     clickedPattern.push(color);
@@ -40,7 +40,7 @@ function check_answer(currentLevel){
     }
 
 }
-//random color is generated and pushed in game pattern(2)
+//random color is generated and pushed in game pattern
 function nextSequence(){
     clickedPattern=[];
     a=level;
